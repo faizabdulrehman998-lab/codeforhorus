@@ -1,0 +1,278 @@
+:root {
+  --bg: #070b14;
+  --panel: rgba(20, 30, 50, 0.72);
+  --stroke: rgba(140, 180, 255, 0.18);
+  --accent: #ffd66b;
+  --accent-2: #6ad1ff;
+  --text: #eaf1ff;
+  --muted: #93a4c4;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #16233c 0%, var(--bg) 60%);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px;
+  min-height: 0;
+}
+
+/* ---------- start screen ---------- */
+
+.title {
+  font-size: clamp(28px, 7vw, 46px);
+  margin: 0;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 24px rgba(255, 214, 107, 0.25);
+}
+
+.title span {
+  color: var(--accent);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(13px, 3.4vw, 16px);
+}
+
+.start-art {
+  width: min(420px, 90vw);
+  max-height: 46vh;
+  aspect-ratio: 420 / 340;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 0 40px rgba(80, 140, 255, 0.08);
+}
+
+.start-art canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- buttons ---------- */
+
+.play-btn {
+  border: none;
+  cursor: pointer;
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 700;
+  color: #1a1206;
+  padding: 14px 58px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe08a, var(--accent));
+  box-shadow: 0 10px 30px rgba(255, 214, 107, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.play-btn:hover {
+  transform: translateY(-2px);
+}
+
+.play-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.play-btn.small {
+  font-size: 17px;
+  padding: 12px 34px;
+  width: 100%;
+}
+
+.ghost-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--stroke);
+  font-size: 15px;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.icon-btn {
+  cursor: pointer;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  backdrop-filter: blur(8px);
+}
+
+.icon-btn:hover {
+  background: rgba(60, 90, 140, 0.6);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: clamp(12px, 3.2vw, 14px);
+  margin: 0;
+  text-align: center;
+}
+
+.best {
+  margin: 0;
+  color: var(--accent-2);
+  font-size: 14px;
+}
+
+/* ---------- game screen ---------- */
+
+.game-screen {
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 8px;
+}
+
+.hud {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 6px 0;
+}
+
+.hud-left {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.hud-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hud-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.hearts {
+  display: flex;
+  gap: 6px;
+}
+
+.heart {
+  width: 26px;
+  height: 26px;
+}
+
+.heart.on path {
+  fill: #ff5d7a;
+  filter: drop-shadow(0 0 6px rgba(255, 93, 122, 0.6));
+}
+
+.heart.off path {
+  fill: #2b3448;
+}
+
+.hud-right {
+  display: flex;
+  gap: 8px;
+}
+
+.arena {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  background: #0e1726;
+}
+
+.arena canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.hint.in-game {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ---------- overlays ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 8, 16, 0.68);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  z-index: 10;
+}
+
+.card {
+  width: min(340px, 90vw);
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  padding: 26px 24px;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+}
+
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+.final {
+  color: var(--text);
+  margin: 4px 0;
+}
+
+.final b {
+  color: var(--accent);
+  font-size: 22px;
+}
