@@ -9,16 +9,20 @@
 }
 
 html,
-body,
-#root {
-  height: 100%;
+body {
   margin: 0;
 }
 
-body {
+.khishig-shell {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
   font-family: 'Outfit', 'Segoe UI', system-ui, sans-serif;
   background: linear-gradient(155deg, #d8f5e3 0%, #ecfdf2 38%, #ffffff 100%);
-  overflow: hidden;
+}
+
+.khishig-shell .landing {
+  height: 100%;
 }
 
 /* ---------- background layers ---------- */
